@@ -5,7 +5,10 @@
     "Alex Yashkin <alex.yashkin@gmail.com>"
   ],
   "description": "Styled file input",
-  "main": "fileinput.min.js",
+  "main": [
+    "fileinput.min.js",
+    "fileinput.css"
+  ],
   "keywords": [
     "jquery",
     "fileinput"
