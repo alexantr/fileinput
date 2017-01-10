@@ -6,7 +6,7 @@
   ],
   "description": "Styled file input",
   "main": [
-    "fileinput.min.js",
+    "fileinput.js",
     "fileinput.css"
   ],
   "keywords": [
