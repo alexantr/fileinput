@@ -1,34 +1,43 @@
-(function ($) {
+;(function ($) {
+    'use strict';
+
     $.fn.fileinput = function (o) {
 
         o = $.extend({
             title: 'Browse...',
+            multipleText: '{0} files',
             buttonClass: 'btn btn-default',
-            multipleText: '{0} files'
+            selectedClass: 'file-selected',
+            clearButton: '<button type="button" class="fileinput-clear close">&times;</button>'
         }, o || {});
 
         this.each(function (i, elem) {
 
-            var $elem = $(elem);
+            var $input = $(elem);
 
-            if (typeof $elem.attr('data-fileinput-disabled') != 'undefined') {
+            if (typeof $input.attr('data-fileinput-disabled') != 'undefined') {
                 return;
             }
 
-            var buttonWord = o.title;
-
-            if (typeof $elem.attr('title') != 'undefined') {
-                buttonWord = $elem.attr('title');
+            // set title
+            var title = o.title;
+            if (!!$input.attr('data-title')) {
+                title = $input.attr('data-title');
+            } else if (!!$input.attr('title')) {
+                title = $input.attr('title');
             }
 
-            var className = o.buttonClass;
-            if (!!$elem.attr('class')) {
-                className = $elem.attr('class');
+            // set buttonClass
+            var buttonClass = o.buttonClass;
+            if (!!$input.attr('data-button-class')) {
+                buttonClass = $input.attr('data-button-class');
+            } else if (!!$input.attr('class')) {
+                buttonClass = $input.attr('class');
             }
 
-            $elem.wrap('<span class="fileinput ' + className + '"></span>');
-            $elem.closest('.fileinput').prepend($('<span></span>').html(buttonWord));
-            $elem.closest('.fileinput').wrap($('<span class="fileinput-wrapper"></span>'));
+            $input.wrap('<span class="' + $.trim('fileinput ' + buttonClass) + '"></span>');
+            $input.closest('.fileinput').prepend($('<span></span>').html(title));
+            $input.closest('.fileinput').wrap($('<span class="fileinput-wrapper"></span>'));
 
         }).promise().done(function () {
 
@@ -37,12 +46,26 @@
             // change
             $body.on('change', '.fileinput input[type=file]', function () {
 
-                var fileName = $(this).val();
+                var $input = $(this),
+                    $wrapper = $input.closest('.fileinput-wrapper'),
+                    fileName = $input.val(),
+                    multipleText = o.multipleText,
+                    selectedClass = o.selectedClass;
+
+                // set multipleText
+                if (!!$input.attr('data-multiple-text')) {
+                    multipleText = $input.attr('data-multiple-text');
+                }
+
+                // set selectedClass
+                if (!!$input.attr('data-selected-class')) {
+                    selectedClass = $input.attr('data-selected-class');
+                }
 
                 // Remove any previous file names
-                $(this).closest('.fileinput-wrapper').find('.fileinput-name').remove();
-                if (!!$(this).prop('files') && $(this).prop('files').length > 1) {
-                    fileName = o.multipleText.replace('{0}', $(this)[0].files.length);
+                $wrapper.removeClass(selectedClass).find('.fileinput-name').remove();
+                if (!!$input.prop('files') && $input.prop('files').length > 1) {
+                    fileName = multipleText.replace('{0}', $input[0].files.length);
                 } else {
                     fileName = fileName.substring(fileName.lastIndexOf('\\') + 1, fileName.length);
                 }
@@ -53,18 +76,31 @@
                 }
 
                 // Print the fileName aside (right after the the button)
-                $(this).closest('.fileinput-wrapper').append('<span class="fileinput-name">' + fileName + '<button type="button" class="fileinput-clear close">&times;</button></span>');
+                $wrapper.addClass(selectedClass)
+                    .append('<span class="fileinput-name">' + fileName + o.clearButton + '</span>');
             });
 
             // clear
             $body.on('click', '.fileinput-clear', function (e) {
                 e.preventDefault();
-                var wrapper = $(this).closest('.fileinput-wrapper').find('.fileinput');
-                var input = wrapper.find('input');
-                input.replaceWith(input.val('').clone(true));
-                $(this).closest('.fileinput-name').remove();
+                var $wrapper = $(this).closest('.fileinput-wrapper'),
+                    $input = $wrapper.find('input[type=file]'),
+                    selectedClass = o.selectedClass;
+
+                // set selectedClass
+                if (!!$input.attr('data-selected-class')) {
+                    selectedClass = $input.attr('data-selected-class');
+                }
+
+                // clear input by cloning them
+                $input.replaceWith($input.val('').clone(true));
+
+                $wrapper.find('.fileinput-name').remove();
+                $wrapper.find('input').trigger('change');
+                $wrapper.removeClass(selectedClass);
             });
 
         });
     };
+
 })(jQuery);

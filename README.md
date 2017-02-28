@@ -9,15 +9,19 @@ Example with all options:
 jQuery(function ($) {
     $('input[type="file"]').fileinput({
         title: 'Browse...',
+        multipleText: '{0} files', // for multiple selection. {0} will be replaced with number of seleted files
         buttonClass: 'btn btn-default',
-        multipleText: '{0} files' // for multiple selection. {0} will be replaced with number of seleted files
+        selectedClass: 'file-selected',
+        clearButton: '<button type="button" class="fileinput-clear close">&times;</button>'
     });
 });
 ```
 
-Button title can be set from `title` attribute: `<input type="file" title="...">`.
+Options `title`, `multipleText`, `buttonClass`, `selectedClass` can be redefined by data-attributes:
+`data-title`, `data-multiple-text`, `data-button-class`, `data-selected-class`.
 
-Additional classes will be added from `class` attribute: `<input type="file" class="...">`.
+Also button title and class can be set from `title` and `class` attributes:
+`<input type="file" title="Обзор..." class="btn btn-danger">`.
 
 If you want to disable styling some inputs you can add attribute `data-fileinput-disabled` to them.
 
@@ -39,7 +43,7 @@ Generated HTML-code:
 When file selected:
 
 ```html
-<span class="fileinput-wrapper">
+<span class="fileinput-wrapper file-selected">
     <span class="fileinput btn btn-default">
         <span>Browse...</span>
         <input type="file">
