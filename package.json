@@ -1,6 +1,6 @@
 {
   "name": "jquery-fileinput",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Styled file input",
   "main": "fileinput.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "url": "https://github.com/alexantr/fileinput/issues"
   },
   "homepage": "https://github.com/alexantr/fileinput#readme",
-  "devDependencies": {
+  "dependencies": {
     "jquery": ">=1.8.0"
   }
 }
