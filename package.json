@@ -1,0 +1,26 @@
+{
+  "name": "jquery-fileinput",
+  "version": "1.2.0",
+  "description": "Styled file input",
+  "main": "fileinput.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexantr/fileinput.git"
+  },
+  "keywords": [
+    "jquery",
+    "fileinput"
+  ],
+  "author": "Alex Yashkin <alex@yashkin.by>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexantr/fileinput/issues"
+  },
+  "homepage": "https://github.com/alexantr/fileinput#readme",
+  "devDependencies": {
+    "jquery": ">=1.8.0"
+  }
+}

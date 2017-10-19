@@ -8,14 +8,15 @@
             multipleText: '{0} files',
             buttonClass: 'btn btn-default',
             selectedClass: 'file-selected',
-            clearButton: '<button type="button" class="fileinput-clear close">&times;</button>'
+            clearButton: '<button type="button" class="fileinput-clear close">&times;</button>',
+            complete: function () {}
         }, o || {});
 
         this.each(function (i, elem) {
 
             var $input = $(elem);
 
-            if (typeof $input.attr('data-fileinput-disabled') != 'undefined') {
+            if (typeof $input.attr('data-fileinput-disabled') !== 'undefined') {
                 return;
             }
 
@@ -38,6 +39,10 @@
             $input.wrap('<span class="' + $.trim('fileinput ' + buttonClass) + '"></span>');
             $input.closest('.fileinput').prepend($('<span></span>').html(title));
             $input.closest('.fileinput').wrap($('<span class="fileinput-wrapper"></span>'));
+
+            if (typeof o.complete === 'function') {
+                o.complete.call(this);
+            }
 
         }).promise().done(function () {
 

@@ -1,4 +1,5 @@
-# fileinput
+# jQuery File Input
+
 Simple jQuery plugin for styling HTML file inputs.
 
 ## Usage
@@ -12,7 +13,10 @@ jQuery(function ($) {
         multipleText: '{0} files', // for multiple selection. {0} will be replaced with number of seleted files
         buttonClass: 'btn btn-default',
         selectedClass: 'file-selected',
-        clearButton: '<button type="button" class="fileinput-clear close">&times;</button>'
+        clearButton: '<button type="button" class="fileinput-clear close">&times;</button>',
+        complete: function() {
+            // $(this) is input[type="file"]
+        }
     });
 });
 ```
