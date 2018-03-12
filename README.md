@@ -4,6 +4,12 @@ Simple jQuery plugin for styling HTML file inputs.
 
 ## Usage
 
+Example:
+
+```js
+$('input[type="file"]').fileinput();
+```
+
 Example with all options:
 
 ```js
@@ -11,6 +17,7 @@ jQuery(function ($) {
     $('input[type="file"]').fileinput({
         title: 'Browse...',
         multipleText: '{0} files', // for multiple selection. {0} will be replaced with number of seleted files
+        showMultipleNames: false, // if true, show filenames comma separated instead text from multipleText
         buttonClass: 'btn btn-default',
         selectedClass: 'file-selected',
         clearButton: '<button type="button" class="fileinput-clear close">&times;</button>',
@@ -21,8 +28,8 @@ jQuery(function ($) {
 });
 ```
 
-Options `title`, `multipleText`, `buttonClass`, `selectedClass` can be redefined by data-attributes:
-`data-title`, `data-multiple-text`, `data-button-class`, `data-selected-class`.
+All options can be redefined by data-attributes:
+`data-title`, `data-multiple-text`, `data-show-multiple-names`, `data-button-class`, `data-selected-class`.
 
 Also button title and class can be set from `title` and `class` attributes:
 `<input type="file" title="Обзор..." class="btn btn-danger">`.
