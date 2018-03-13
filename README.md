@@ -38,22 +38,20 @@ $('input[type="file"]').fileinput();
 Including all options:
 
 ```js
-jQuery(function ($) {
-    $('input[type="file"]').fileinput({
-        title: 'Browse...',
-        multipleText: '{0} files', // for multiple selection. {0} will be replaced with number of seleted files
-        showMultipleNames: false, // if true, show filenames comma separated instead text from multipleText
-        buttonClass: 'btn btn-default',
-        selectedClass: 'file-selected',
-        clearButton: '<button type="button" class="fileinput-clear close">&times;</button>',
-        complete: function() {
-            // $(this) is input[type="file"]
-        }
-    });
+$('input[type="file"]').fileinput({
+    title: 'Browse...',
+    multipleText: '{0} files', // for multiple selection. {0} will be replaced with number of seleted files
+    showMultipleNames: false, // if true, show filenames comma separated instead text from multipleText
+    buttonClass: 'btn btn-default',
+    selectedClass: 'file-selected',
+    clearButton: '<button type="button" class="fileinput-clear close">&times;</button>',
+    complete: function() {
+        // $(this) is input[type="file"]
+    }
 });
 ```
 
-All options can be redefined by data-attributes:
+Almost all options can be redefined by data-attributes:
 
 - `data-title`
 - `data-multiple-text`
