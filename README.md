@@ -2,15 +2,40 @@
 
 Simple jQuery plugin for styling HTML file inputs.
 
+## Installation
+
+Install with [npm](https://www.npmjs.com/):
+
+```
+npm i --save jquery-fileinput
+```
+
+Install with [bower](https://bower.io/):
+
+```
+bower install fileinput
+```
+
 ## Usage
 
-Example:
+HTML:
+
+```html
+<script src="path/to/jquery/jquery.min.js"></script>
+<script src="path/to/fileinput/fileinput.min.js"></script>
+```
+
+```html
+<input type="file" name="file">
+```
+
+JavaScript:
 
 ```js
 $('input[type="file"]').fileinput();
 ```
 
-Example with all options:
+Including all options:
 
 ```js
 jQuery(function ($) {
@@ -29,16 +54,31 @@ jQuery(function ($) {
 ```
 
 All options can be redefined by data-attributes:
-`data-title`, `data-multiple-text`, `data-show-multiple-names`, `data-button-class`, `data-selected-class`.
+
+- `data-title`
+- `data-multiple-text`
+- `data-show-multiple-names`
+- `data-button-class`
+- `data-selected-class`
 
 Also button title and class can be set from `title` and `class` attributes:
-`<input type="file" title="Обзор..." class="btn btn-danger">`.
+
+```html
+<input type="file" title="Обзор..." class="btn btn-danger">
+```
 
 If you want to disable styling some inputs you can add attribute `data-fileinput-disabled` to them.
 
 ## Styling
 
 Included CSS-styles work great with Bootstrap 3.
+
+Just append `fileinput.css`:
+
+```html
+<link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="path/to/fileinput/fileinput.css">
+```
 
 Generated HTML-code:
 
