@@ -89,7 +89,7 @@
                 $input.replaceWith($input.val('').clone(true));
 
                 $wrapper.find('.fileinput-name').remove();
-                $wrapper.find('input').trigger('change');
+                $wrapper.find('input').trigger('change').trigger('input');
                 $wrapper.removeClass(options.selectedClass);
             });
         });
