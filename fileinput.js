@@ -10,6 +10,7 @@
             buttonClass: 'btn btn-default',
             selectedClass: 'file-selected',
             clearButton: '<button type="button" class="fileinput-clear close">&times;</button>',
+            multipleSeparator: ', ',
             complete: function () {}
         }, o || {});
 
@@ -59,7 +60,7 @@
                         for (var i = 0, numFiles = $input[0].files.length; i < numFiles; i++) {
                             names.push($input[0].files[i].name);
                         }
-                        fileName = names.join(', ');
+                        fileName = names.join(options.multipleSeparator);
                     } else {
                         fileName = options.multipleText.replace('{0}', $input[0].files.length);
                     }

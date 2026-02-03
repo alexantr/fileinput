@@ -2,7 +2,7 @@
   "name": "fileinput",
   "homepage": "https://github.com/alexantr/fileinput",
   "authors": [
-    "Alex Yashkin <alex@yashkin.by>"
+    "Alex Yashkin <alex.yashkin@gmail.com>"
   ],
   "description": "Styled file input",
   "main": [
@@ -15,7 +15,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "jquery": ">=1.8.0"
+    "jquery": ">=3.5.0"
   },
   "ignore": [
     "**/.*",
